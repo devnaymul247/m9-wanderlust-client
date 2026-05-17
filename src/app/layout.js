@@ -1,3 +1,6 @@
+import dns from 'node:dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";

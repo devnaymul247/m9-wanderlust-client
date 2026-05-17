@@ -46,9 +46,9 @@ export function EditModal({ destination }) {
     // revalidatePath(`/destinations/${_id}`);
 
     const data = await res.json();
-
-    refreshData(`/destinations/${_id}`);
-    console.log(data);
+    
+    refreshData(`/destinations/${_id}`); // Call the refreshData function to revalidate the path from action.js.
+    // console.log(data);
   };
   return (
     <Modal>
