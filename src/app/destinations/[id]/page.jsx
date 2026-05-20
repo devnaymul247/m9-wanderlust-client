@@ -1,8 +1,8 @@
 
-// import BookingCard from "@/components/BookingCard";
+import BookingCard from "@/components/BookingCard";
 import { DeleteAlert } from "@/components/DeleteAlert";
-// import { auth } from "@/lib/auth";
-// import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import { EditModal } from "@/components/EditModal";
 import Image from "next/image";
 import { FaRegCalendar } from "react-icons/fa6";
@@ -11,14 +11,21 @@ import { LuMapPin } from "react-icons/lu";
 const destinationDetailsPage = async ({ params }) => {
     const { id } = await params;
 
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+    });
+    console.log(token);
+
     const res = await fetch(`http://localhost:5000/destination/${id}`, {
-        method: 'GET',
+        // method: 'GET',
         headers: {
-            'content-type': 'application/json'
+            // 'content-type': 'application/json',
+            'authorization': `Bearer ${token}`
         }
-    })
+    });
+
     const destination = await res.json()
-    // console.log(destination);
+    console.log(destination);
     const { imageUrl, price, destinationName, duration, country, description } =
     destination;
 
@@ -62,7 +69,7 @@ const destinationDetailsPage = async ({ params }) => {
                 </div>
 
 
-                {/* <BookingCard destination={destination} /> */}
+                <BookingCard destination={destination} />
             </div>
 
 
