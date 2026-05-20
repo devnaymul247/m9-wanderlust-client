@@ -35,7 +35,7 @@ const Navbar = () => {
         <Image
           src={"/assets/Wanderlast.png"}
           height={150}
-          width={150}
+          width={160}
           alt="logo"
         />
       </div>

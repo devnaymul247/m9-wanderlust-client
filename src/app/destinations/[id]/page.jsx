@@ -14,9 +14,9 @@ const destinationDetailsPage = async ({ params }) => {
     const {token} = await auth.api.getToken({
         headers: await headers(),
     });
-    console.log(token);
+    // console.log(token);
 
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
         // method: 'GET',
         headers: {
             // 'content-type': 'application/json',
@@ -25,7 +25,7 @@ const destinationDetailsPage = async ({ params }) => {
     });
 
     const destination = await res.json()
-    console.log(destination);
+    // console.log(destination);
     const { imageUrl, price, destinationName, duration, country, description } =
     destination;
 
